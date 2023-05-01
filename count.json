@@ -1,4 +1,4 @@
 {
-  "message": "Bad credentials",
-  "documentation_url": "https://docs.github.com/rest"
+  "message": "Must have push access to repository",
+  "documentation_url": "https://docs.github.com/rest/metrics/traffic#get-repository-clones"
 }
