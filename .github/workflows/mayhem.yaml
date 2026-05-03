@@ -72,4 +72,3 @@ jobs:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
           args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.mayhemfile }} --duration 300
       
-          sarif_file: sarif
