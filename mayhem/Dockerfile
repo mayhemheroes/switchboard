@@ -1,11 +1,11 @@
-FROM golang:1.23 as builder
+FROM golang:1.24 as builder
 
 COPY . /teacup
 WORKDIR /teacup/mayhem
 
-RUN go install github.com/dvyukov/go-fuzz/go-fuzz@latest github.com/dvyukov/go-fuzz/go-fuzz-build@latest
-RUN go get github.com/dvyukov/go-fuzz/go-fuzz-dep
-RUN go get github.com/AdaLogics/go-fuzz-headers
+RUN GOTOOLCHAIN=auto go install github.com/dvyukov/go-fuzz/go-fuzz@latest github.com/dvyukov/go-fuzz/go-fuzz-build@latest
+RUN GOTOOLCHAIN=auto go get github.com/dvyukov/go-fuzz/go-fuzz-dep
+RUN GOTOOLCHAIN=auto go get github.com/AdaLogics/go-fuzz-headers
 RUN apt update && apt install -y clang
 
 RUN cd fuzz_switchboard_event && go-fuzz-build -libfuzzer -o fuzz_switchboard_event.a && \
